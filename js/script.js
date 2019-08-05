@@ -1,4 +1,4 @@
-import initSmoothScroll from './modules/smooth-scroll.js';
+import SmoothScroll from './modules/smooth-scroll.js';
 import initScrollAnimation from './modules/scroll-animation.js';
 import initCollapse from './modules/collapse.js';
 import initTabNav from './modules/tab.js';
@@ -11,7 +11,14 @@ import initHours from './modules/hours.js';
 import initFetchAnimals from './modules/fetch-animals.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 
-initSmoothScroll();
+const options = {
+  behavior: 'smooth',
+  block: 'start'
+}
+const smoothScroll = new SmoothScroll('[data-menu="smooth"] a[href^="#"]', options);
+smoothScroll.init();
+
+
 initScrollAnimation();
 initCollapse();
 initAccordion();
@@ -31,6 +38,3 @@ initFetchBitcoin();
 
 // const diference = _.difference(['Banana', 'Uva'], ['Banana', 'Morango']);
 // console.log(diference);
-
-
-
