@@ -1,5 +1,4 @@
 import SmoothScroll from './modules/smooth-scroll.js';
-import initScrollAnimation from './modules/scroll-animation.js';
 import initCollapse from './modules/collapse.js';
 import initTabNav from './modules/tab.js';
 import initModal from './modules/modal.js';
@@ -10,6 +9,7 @@ import initMenuMobile from './modules/menu-mobile.js';
 import initHours from './modules/hours.js';
 import initFetchAnimals from './modules/fetch-animals.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
+import initScrollAnimation from './modules/scroll-animation.js';
 
 const options = {
   behavior: 'smooth',
@@ -19,7 +19,6 @@ const smoothScroll = new SmoothScroll('[data-menu="smooth"] a[href^="#"]', optio
 smoothScroll.init();
 
 
-initScrollAnimation();
 initCollapse();
 initAccordion();
 initTabNav();
@@ -30,6 +29,7 @@ initMenuMobile();
 initHours();
 initFetchAnimals();
 initFetchBitcoin();
+initScrollAnimation();
 
 // import $ from 'jquery';
 // import _ from 'lodash';
