@@ -1,7 +1,7 @@
 import SmoothScroll from './modules/smooth-scroll.js';
 import Accordion from './modules/accordion.js';
 import Collapse from './modules/collapse.js';
-import initTabNav from './modules/tab.js';
+import Tab from './modules/tab.js';
 import initModal from './modules/modal.js';
 import initTooltip from './modules/tooltip.js';
 import initDropDown from './modules/dropdown.js';
@@ -25,7 +25,9 @@ collapse.init()
 const accordion = new Accordion('[data-anime="accordion"] dt');
 accordion.init();
 
-initTabNav();
+const tab = new Tab('[data-tab="menu"] li', '[data-tab="content"] section');
+tab.init();
+
 initModal();
 initTooltip();
 initDropDown();

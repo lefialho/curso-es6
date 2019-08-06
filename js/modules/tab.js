@@ -1,28 +1,29 @@
-import {
-  active
-} from './config.js';
-
-export default function initTabNav() {
-  const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
-  const tabContent = document.querySelectorAll('[data-tab="content"] section');
-
-  function activeTab(index) {
-    tabContent.forEach((section) => {
-      section.classList.remove(active);
-    });
-    // console.log(tabContent[index]);
-    // console.log(tabContent[index].dataset.anime);
-    const animeDirection = tabContent[index].dataset.anime;
-    tabContent[index].classList.add(active, animeDirection);
+export default class Tab {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu);
+    this.tabContent = document.querySelectorAll(content);
+    this.activeClass = 'active';
   }
 
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add(active);
-    tabMenu.forEach((itemMenu, index) => {
-      // console.log(itemMenu, index);
-      itemMenu.addEventListener('click', () => {
-        activeTab(index);
-      });
+  activeTab(index) {
+    this.tabContent.forEach((section) => {
+      section.classList.remove(this.activeClass);
     });
+    const animeDirection = this.tabContent[index].dataset.anime;
+    console.log(animeDirection)
+    this.tabContent[index].classList.add(this.activeClass, animeDirection);
+  }
+
+  addTabEvent() {
+    this.tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => this.activeTab(index));
+    });
+  }
+
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.activeTab(0);
+      this.addTabEvent();
+    }
   }
 }
