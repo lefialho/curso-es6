@@ -1,6 +1,6 @@
 import SmoothScroll from './modules/smooth-scroll.js';
 import Accordion from './modules/accordion.js';
-import initCollapse from './modules/collapse.js';
+import Collapse from './modules/collapse.js';
 import initTabNav from './modules/tab.js';
 import initModal from './modules/modal.js';
 import initTooltip from './modules/tooltip.js';
@@ -19,10 +19,12 @@ const options = {
 const smoothScroll = new SmoothScroll('[data-menu="smooth"] a[href^="#"]', options);
 smoothScroll.init();
 
+const collapse = new Collapse('[data-anime="collapse"] dt');
+collapse.init()
+
 const accordion = new Accordion('[data-anime="accordion"] dt');
 accordion.init();
 
-initCollapse();
 initTabNav();
 initModal();
 initTooltip();

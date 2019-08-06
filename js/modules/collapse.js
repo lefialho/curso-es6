@@ -1,22 +1,24 @@
-import {
-  active
-} from './config.js';
+export default class Collapse {
+  constructor(list) {
+    this.collapseList = document.querySelectorAll(list);
+    this.activeClass = 'active';
+  }
 
-export default function initCollapse() {
-  const accordionList = document.querySelectorAll('[data-anime="collapse"] dt');
+  collapse(item) {
+    item.classList.toggle(this.activeClass);
+    item.nextElementSibling.classList.toggle(this.activeClass);
+  }
 
-  if (accordionList.length) {
-    accordionList[0].classList.add(active);
-    accordionList[0].nextElementSibling.classList.add(active);
-
-    function activeCollapse() {
-      // console.log(this);
-      this.classList.toggle(active);
-      this.nextElementSibling.classList.toggle(active);
-    }
-
-    accordionList.forEach((item) => {
-      item.addEventListener('click', activeCollapse)
+  addCollapseEvent() {
+    this.collapseList.forEach((item) => {
+      item.addEventListener('click', () => this.collapse(item));
     });
+  }
+
+  init() {
+    if (this.collapseList.length) {
+      this.collapse(this.collapseList[0]);
+      this.addCollapseEvent();
+    }
   }
 }
