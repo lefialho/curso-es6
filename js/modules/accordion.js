@@ -1,29 +1,32 @@
-import {
-  active
-} from './config.js';
-
-export default function initCollapse() {
-  const accordionList = document.querySelectorAll('[data-anime="accordion"] dt');
-
-  function activeCollapse() {
-    console.log(this);
-    accordionList.forEach((item) => {
-      if (!this.classList.contains(active)) {
-        item.classList.remove(active);
-        item.nextElementSibling.classList.remove(active);
-      }
-    });
-
-    this.classList.toggle(active);
-    this.nextElementSibling.classList.toggle(active);
+export default class Accordion {
+  constructor(list) {
+    this.accordionList = document.querySelectorAll(list);
+    this.activeClass = 'active';
   }
 
-  if (accordionList.length) {
-    accordionList[0].classList.add(active);
-    accordionList[0].nextElementSibling.classList.add(active);
+  accordion(item) {
+    if (!item.classList.contains(this.activeClass)) {
+      console.log(item)
+      this.accordionList.forEach(item => {
+        item.classList.remove(this.activeClass);
+        item.nextElementSibling.classList.remove(this.activeClass);
+      });
+    }
 
-    accordionList.forEach((item) => {
-      item.addEventListener('click', activeCollapse)
+    item.classList.toggle(this.activeClass);
+    item.nextElementSibling.classList.toggle(this.activeClass);
+  }
+
+  addAccordionEvent() {
+    this.accordionList.forEach((item) => {
+      item.addEventListener('click', () => this.accordion(item));
     });
+  }
+
+  init() {
+    if (this.accordionList.length) {
+      this.accordion(this.accordionList[0]);
+      this.addAccordionEvent();
+    }
   }
 }
