@@ -6,7 +6,6 @@ export default class Accordion {
 
   accordion(item) {
     if (!item.classList.contains(this.activeClass)) {
-      console.log(item)
       this.accordionList.forEach(item => {
         item.classList.remove(this.activeClass);
         item.nextElementSibling.classList.remove(this.activeClass);
