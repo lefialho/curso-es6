@@ -20,5 +20,6 @@ export default class Collapse {
       this.collapse(this.collapseList[0]);
       this.addCollapseEvent();
     }
+    return this;
   }
 }

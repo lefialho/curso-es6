@@ -10,7 +10,6 @@ export default class Tab {
       section.classList.remove(this.activeClass);
     });
     const animeDirection = this.tabContent[index].dataset.anime;
-    console.log(animeDirection)
     this.tabContent[index].classList.add(this.activeClass, animeDirection);
   }
 
@@ -25,5 +24,6 @@ export default class Tab {
       this.activeTab(0);
       this.addTabEvent();
     }
+    return this;
   }
 }

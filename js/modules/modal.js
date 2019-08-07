@@ -1,79 +1,52 @@
-import {
-  active
-} from './config.js';
+export default class Modal {
+  constructor(openButton, closeButton, containerModal) {
+    this.openButton = document.querySelectorAll(openButton);
+    this.closeButton = document.querySelectorAll(closeButton);
+    this.containerModal = document.querySelectorAll(containerModal);
+    this.activeClass = 'active';
 
-export default function initModal() {
-  const openButton = document.querySelectorAll('[data-modal="open"]');
-  const closeButton = document.querySelectorAll('[data-modal="close"]');
-  const containerModal = document.querySelectorAll('[data-modal="container"]');
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
 
-  function openModal(event) {
+  openModal(event) {
     event.preventDefault();
     const target = event.currentTarget.getAttribute('aria-controls');
-    // console.log(target);
     const thisModal = document.querySelectorAll(target);
-    // console.log(thisModal)
+
     thisModal.forEach((item) => {
-      item.classList.add(active)
-    })
-    // thisModal.classList.add(active);
-  }
-
-  function closeModal(event) {
-    event.preventDefault();
-    containerModal.forEach((item) => {
-      item.classList.remove(active)
+      item.classList.add(this.activeClass)
     })
   }
 
-  function clickOutsideModal(event) {
-    event.preventDefault();
-    // console.log(event.target);
-    // console.log(this);
-    if (event.target === this)
-      closeModal(event)
+  closeModal() {
+    this.containerModal.forEach((item) => {
+      item.classList.remove(this.activeClass)
+    })
   }
 
-  if (openButton && closeButton) {
-    openButton.forEach((button) => {
-      button.addEventListener('click', openModal);
+  clickOutsideModal(modal) {
+    if (event.target === modal) {
+      this.closeModal()
+    }
+  }
+
+  addModalEvents() {
+    this.openButton.forEach((button) => {
+      button.addEventListener('click', this.openModal);
     })
-    containerModal.forEach((item) => {
-      item.addEventListener('click', clickOutsideModal)
+    this.closeButton.forEach((button) => {
+      button.addEventListener('click', this.closeModal)
     })
-    closeButton.forEach((button) => {
-      button.addEventListener('click', closeModal)
+    this.containerModal.forEach((modal) => {
+      modal.addEventListener('click', () => this.clickOutsideModal(modal))
     })
+  }
+
+  init() {
+    if (this.openButton.length && this.closeButton.length && this.containerModal.length) {
+      this.addModalEvents();
+    }
+    return this;
   }
 }
-
-
-// import {
-//   active
-// } from './config.js';
-
-// export default function initModal() {
-//   const openButton = document.querySelector('[data-modal="open"]');
-//   const closeButton = document.querySelector('[data-modal="close"]');
-//   const containerModal = document.querySelector('[data-modal="container"]');
-//   // console.log(openButton, closeButton, containerModal);
-
-//   if (openButton && closeButton && containerModal) {
-//     function toggleModal(event) {
-//       event.preventDefault();
-//       containerModal.classList.toggle(active);
-//     }
-
-//     function clickOutsideModal(event) {
-//       event.preventDefault();
-//       // console.log(event.target);
-//       // console.log(this);
-//       if (event.target === this)
-//         toggleModal(event);
-//     }
-
-//     openButton.addEventListener('click', toggleModal);
-//     closeButton.addEventListener('click', toggleModal);
-//     containerModal.addEventListener('click', clickOutsideModal);
-//   }
-// }
