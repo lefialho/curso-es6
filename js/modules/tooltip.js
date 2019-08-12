@@ -16,7 +16,6 @@ export default class Tooltip {
       this.tooltipBox.style.left = `${event.pageX + 10}px`;
     }
     this.tooltipBox.classList.add(this.activeClass);
-    // console.log(event.pageX +  , window.innerWidth);
   }
 
   onMouseLeave(event) {
