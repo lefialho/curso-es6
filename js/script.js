@@ -10,6 +10,7 @@ import initHours from './modules/hours.js';
 import initFetchAnimals from './modules/fetch-animals.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 import initScrollAnimation from './modules/scroll-animation.js';
+import HideMenu from './modules/menu-fixed.js';
 
 const options = {
   behavior: 'smooth',
@@ -32,7 +33,10 @@ const modal = new Modal('[data-modal="open"]', '[data-modal="close"]', '[data-mo
 modal.init();
 
 const tooltip = new Tooltip('[data-tooltip]');
-tooltip.init()
+tooltip.init();
+
+const hideMenu = new HideMenu('[data-menu="smooth"]');
+hideMenu.init();
 
 
 initDropDown();
