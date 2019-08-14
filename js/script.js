@@ -7,7 +7,7 @@ import Tooltip from './modules/tooltip.js';
 import initDropDown from './modules/dropdown.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initHours from './modules/hours.js';
-import initFetchBitcoin from './modules/fetch-bitcoin.js';
+import fetchBitcoin from './modules/fetch-bitcoin.js';
 import initScrollAnimation from './modules/scroll-animation.js';
 import HideMenu from './modules/menu-fixed.js';
 import fetchAnimals from './modules/fetch-animals.js';
@@ -41,10 +41,10 @@ hideMenu.init();
 initDropDown();
 initMenuMobile();
 initHours();
-initFetchBitcoin();
 initScrollAnimation();
 
 fetchAnimals('animalsapi.json', '.numbers-grid');
+fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
 
 // import $ from 'jquery';
 // import _ from 'lodash';
