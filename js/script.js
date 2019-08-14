@@ -8,7 +8,7 @@ import initDropDown from './modules/dropdown.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initHours from './modules/hours.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
-import initScrollAnimation from './modules/scroll-animation.js';
+import ScrollAnimation from './modules/scroll-animation.js';
 import HideMenu from './modules/menu-fixed.js';
 import fetchAnimals from './modules/fetch-animals.js';
 
@@ -38,10 +38,13 @@ tooltip.init();
 const hideMenu = new HideMenu('[data-menu="smooth"]');
 hideMenu.init();
 
+const scrollAnimation = new ScrollAnimation('[data-anime^="scroll"]');
+scrollAnimation.init();
+// scrollAnimation.stop();
+
 initDropDown();
 initMenuMobile();
 initHours();
-initScrollAnimation();
 
 fetchAnimals('animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
