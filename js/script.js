@@ -7,10 +7,10 @@ import Tooltip from './modules/tooltip.js';
 import initDropDown from './modules/dropdown.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initHours from './modules/hours.js';
-import initFetchAnimals from './modules/fetch-animals.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 import initScrollAnimation from './modules/scroll-animation.js';
 import HideMenu from './modules/menu-fixed.js';
+import fetchAnimals from './modules/fetch-animals.js';
 
 const options = {
   behavior: 'smooth',
@@ -38,13 +38,13 @@ tooltip.init();
 const hideMenu = new HideMenu('[data-menu="smooth"]');
 hideMenu.init();
 
-
 initDropDown();
 initMenuMobile();
 initHours();
-initFetchAnimals();
 initFetchBitcoin();
 initScrollAnimation();
+
+fetchAnimals('animalsapi.json', '.numbers-grid');
 
 // import $ from 'jquery';
 // import _ from 'lodash';
