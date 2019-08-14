@@ -40,7 +40,7 @@ hideMenu.init();
 
 const scrollAnimation = new ScrollAnimation('[data-anime^="scroll"]');
 scrollAnimation.init();
-console.log(scrollAnimation)
+// scrollAnimation.stop();
 
 initDropDown();
 initMenuMobile();
