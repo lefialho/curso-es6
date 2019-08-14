@@ -8,9 +8,7 @@ export default class HideMenu {
   }
 
   hideMenu() {
-    console.log()
     this.currentScrollPos = window.pageYOffset;
-
     if (this.prevScrollpos > this.currentScrollPos) {
       this.menu.classList.remove('hide');
     } else {
@@ -22,7 +20,7 @@ export default class HideMenu {
 
   smallMenu() {
     this.currentScrollPos = window.pageYOffset;
-    if (this.currentScrollPos > 0) {
+    if (this.currentScrollPos > this.menu.getBoundingClientRect().top) {
       this.menu.classList.add('small');
     } else {
       this.menu.classList.remove('small');
