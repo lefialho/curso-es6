@@ -1,10 +1,12 @@
+import debounce from './debounce.js';
+
 export default class HideMenu {
   constructor(menu) {
     this.menu = document.querySelector(menu);
     this.prevScrollpos = window.pageYOffset;
 
-    this.hideMenu = this.hideMenu.bind(this);
-    this.smallMenu = this.smallMenu.bind(this);
+    this.hideMenu = debounce(this.hideMenu.bind(this), 50);
+    this.smallMenu = debounce(this.smallMenu.bind(this), 50);
   }
 
   hideMenu() {
@@ -13,7 +15,6 @@ export default class HideMenu {
       this.menu.classList.remove('hide');
     } else {
       this.menu.classList.add('hide');
-      // console.log(this.menu.style.top = -this.menu.clientHeight)
     }
     return this.prevScrollpos = this.currentScrollPos;
   }
