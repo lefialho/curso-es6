@@ -27,7 +27,7 @@ export default class ScrollAnimation {
       else if (section.element.classList.contains(this.activeClass))
         section.element.classList.remove(this.activeClass);
       // console.log(section.element)
-      console.log('debounce');
+      // console.log('debounce');
     })
     // console.log(window.pageYOffset)
   }

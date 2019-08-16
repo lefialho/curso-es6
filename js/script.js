@@ -4,8 +4,8 @@ import Collapse from './modules/collapse.js';
 import Tab from './modules/tab.js';
 import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
-import initDropDown from './modules/dropdown.js';
-import initMenuMobile from './modules/menu-mobile.js';
+import DropDown from './modules/dropdown.js';
+import MenuMobile from './modules/menu-mobile.js';
 import initHours from './modules/hours.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnimation from './modules/scroll-animation.js';
@@ -42,8 +42,12 @@ const scrollAnimation = new ScrollAnimation('[data-anime^="scroll"]');
 scrollAnimation.init();
 // scrollAnimation.stop();
 
-initDropDown();
-initMenuMobile();
+const dropdown = new DropDown('[data-dropdown]');
+dropdown.init();
+
+const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', '[data-menu="item"]', '[data-bgblack]', 'active');
+menuMobile.init();
+
 initHours();
 
 fetchAnimals('animalsapi.json', '.numbers-grid');
