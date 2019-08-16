@@ -1,20 +1,38 @@
-export default function initHours() {
-  const operatingHours = document.querySelector('[data-weekend]');
-  const weekendDays = operatingHours.dataset.weekend.split(',').map(Number);
-  // console.log(weekendDays);
-  const weekendHours = operatingHours.dataset.hour.split(',').map(Number);
-  // console.log(weekendHours)
-  const dataNow = new Date()
-  // console.log(dataNow)
-  const dayNow = dataNow.getDay();
-  // console.log(dayNow)
-  const hourNow = dataNow.getUTCHours() - 3; //getHours() também funciona, mas pega hora do PC
-  // console.log(hourNow)
-  const openWeekend = weekendDays.indexOf(dayNow) !== -1
-  // console.log(openWeekend)
-  const openHour = (hourNow >= weekendHours[0] && hourNow < weekendHours[1]);
-  // console.log(openHour)
+export default class Hours {
+  constructor(operatingHours, activeClass) {
+    this.operatingHours = document.querySelector(operatingHours);
+    this.activeClass = activeClass;
+  }
 
-  if (openWeekend && openHour)
-    operatingHours.classList.add('open');
+  operationData() {
+    this.weekendDays = this.operatingHours.dataset.weekend.split(',').map(Number);
+    this.weekendHours = this.operatingHours.dataset.hour.split(',').map(Number);
+  }
+
+  dataNow() {
+    this.dataNow = new Date()
+    this.dayNow = this.dataNow.getDay();
+    this.hourNow = this.dataNow.getUTCHours() - 3; //getHours() também funciona, mas pega hora do PC
+  }
+
+  isOpen() {
+    const openWeekend = this.weekendDays.indexOf(this.dayNow) !== -1
+    const openHour = (this.hourNow >= this.weekendHours[0] && this.hourNow < this.weekendHours[1]);
+    return openWeekend && openHour;
+  }
+
+  activeOpen() {
+    if (this.isOpen()) {
+      this.operatingHours.classList.add(this.activeClass);
+    }
+  }
+
+  init() {
+    if (this.operatingHours) {
+      this.operationData();
+      this.dataNow()
+      this.activeOpen();
+    }
+    return this
+  }
 }
