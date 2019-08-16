@@ -48,7 +48,6 @@ body {
   top: 0;
   z-index: 150;
   transition: .3s ease-in-out;
-  opacity: 1;
 }
 
 .menu.hide {
