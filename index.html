@@ -17,27 +17,27 @@
     <nav class="menu" data-menu="smooth">
       <button data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <ul data-menu="list" id="menu">
-        <li><a href="#animais">Animais</a></li>
+        <li><a href="#animais" data-menu="item">Animais</a></li>
         <li data-dropdown>
           <a href="sobre.html">Sobre</a>
           <ul class="dropdown-menu">
-            <li><a href="empresa.html">A Empresa</a></li>
+            <li><a href="empresa.html" data-menu="item">A Empresa</a></li>
             <li><a href="equipe.html">Equipe</a></li>
             <li><a href="socios.html">Sócios</a></li>
             <li><a href="investidores.html">Investidores</a></li>
           </ul>
         </li>
         <li data-dropdown>
-            <a href="sobre.html">Tipos de animais</a>
-            <ul class="dropdown-menu">
-              <li><a href="empresa.html">Caninos</a></li>
-              <li><a href="equipe.html">Felinos</a></li>
-              <li><a href="socios.html">Bovinos</a></li>
-              <li><a href="investidores.html">Pássarinhos</a></li>
-            </ul>
-          </li>
-        <li><a href="#faq">Faq</a></li>
-        <li><a href="#contato">Contato</a></li>
+          <a href="sobre.html">Tipos de animais</a>
+          <ul class="dropdown-menu">
+            <li><a href="empresa.html">Caninos</a></li>
+            <li><a href="equipe.html">Felinos</a></li>
+            <li><a href="socios.html">Bovinos</a></li>
+            <li><a href="investidores.html">Pássarinhos</a></li>
+          </ul>
+        </li>
+        <li><a href="#faq" data-menu="item">Faq</a></li>
+        <li><a href="#contato" data-menu="item">Contato</a></li>
         <li><a aria-controls="#login" data-modal="open">Login →</a></li>
       </ul>
     </nav>
@@ -171,7 +171,7 @@
       <p aria-controls="#login2" data-modal="open">Todos os direitos reservados ©copyright</p>
     </footer>
   </div>
-  
+
   <!-- Modals -->
   <section class="modal-container" data-modal="container" id="login">
     <div class="modal" data-modal="content">
