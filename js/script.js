@@ -6,7 +6,7 @@ import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
 import DropDown from './modules/dropdown.js';
 import MenuMobile from './modules/menu-mobile.js';
-import initHours from './modules/hours.js';
+import Hours from './modules/hours.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnimation from './modules/scroll-animation.js';
 import HideMenu from './modules/menu-fixed.js';
@@ -48,7 +48,9 @@ dropdown.init();
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', '[data-menu="item"]', '[data-bgblack]', 'active');
 menuMobile.init();
 
-initHours();
+const hours = new Hours('[data-weekend]', 'open');
+hours.init();
+
 
 fetchAnimals('animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
