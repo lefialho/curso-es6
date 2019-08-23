@@ -21,7 +21,9 @@
   border: 10px solid #FB5;
   box-shadow: 0 0 0px 10px white;
   position: relative;
-  min-width: 250px;
+  max-width: 600px;
+  width: 80vw;
+  box-sizing: border-box;
   animation: modal .3s forwards;
 }
 
