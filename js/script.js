@@ -11,6 +11,7 @@ import fetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnimation from './modules/scroll-animation.js';
 import HideMenu from './modules/menu-fixed.js';
 import fetchAnimals from './modules/fetch-animals.js';
+import SlideNav from './/modules/slide.js';
 
 const options = {
   behavior: 'smooth',
@@ -50,9 +51,13 @@ menuMobile.init();
 const hours = new Hours('[data-weekend]', 'open');
 hours.init();
 
-
 fetchAnimals('animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+slide.addArrow('.prev', '.next');
+slide.addControl('.custom-controls')
 
 // import $ from 'jquery';
 // import _ from 'lodash';
