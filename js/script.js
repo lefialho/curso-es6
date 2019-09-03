@@ -54,10 +54,15 @@ hours.init();
 fetchAnimals('animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
 
-const slide = new SlideNav('.slide', '.slide-wrapper');
+const slide = new SlideNav('#slide', '#slide-wrapper');
 slide.init();
-slide.addArrow('.prev', '.next');
-slide.addControl('.custom-controls')
+slide.addArrow('#prev', '#next');
+slide.addControl('#custom-controls')
+
+const slide2 = new SlideNav('#slide2', '#slide-wrapper2');
+slide2.init();
+slide2.addArrow('#prev2', '#next2');
+slide2.addControl('#custom-controls2');
 
 // import $ from 'jquery';
 // import _ from 'lodash';

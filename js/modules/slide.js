@@ -99,7 +99,6 @@ export class Slide {
         element
       }
     });
-    // console.log(this.slideArray)
   }
 
   slideIndexNav(index) {
@@ -159,16 +158,6 @@ export class Slide {
     this.activeNextSlide = this.activeNextSlide.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 200);
   }
-
-  init() {
-    this.bindEvents();
-    this.transition(true);
-    this.addSlideEvents();
-    this.slidesConfig();
-    this.addResizeEvent();
-    this.changeSlide(0);
-    return this;
-  }
 }
 
 export default class SlideNav extends Slide {
@@ -180,7 +169,9 @@ export default class SlideNav extends Slide {
   addArrow(prev, next) {
     this.prevElement = document.querySelector(prev);
     this.nextElement = document.querySelector(next);
-    this.addArrowEvent();
+    if (this.prevElement && this.nextElement) {
+      this.addArrowEvent();
+    }
   }
 
   addArrowEvent() {
@@ -212,13 +203,28 @@ export default class SlideNav extends Slide {
       item.classList.remove(this.activeClass);
     })
     this.controlArray[this.index.active].classList.add(this.activeClass);
+    
+    if(this.prevElement && this.nextElement) {
+      if(this.controlArray[0].classList.contains(this.activeClass)) {
+        this.prevElement.classList.add('hide')
+      } else {
+        this.prevElement.classList.remove('hide')
+      }
+      if (this.controlArray[this.controlArray.length-1].classList.contains(this.activeClass)) {
+        this.nextElement.classList.add('hide');
+      } else {
+        this.nextElement.classList.remove('hide')
+      }
+    }
   }
 
   addControl(customControl) {
-    this.control = document.querySelector(customControl) || this.createControl();
-    this.controlArray = [...this.control.children];
-    this.activeControlItem();
-    this.controlArray.forEach(this.eventControl);
+    if (this.slideArray) {
+      this.control = document.querySelector(customControl) || this.createControl();
+      this.controlArray = [...this.control.children];
+      this.activeControlItem();
+      this.controlArray.forEach(this.eventControl);
+    }
     // console.log(this.control);
     // console.log(this.controlArray);
   }
@@ -226,5 +232,17 @@ export default class SlideNav extends Slide {
   bindControlEvents() {
     this.eventControl = this.eventControl.bind(this);
     this.activeControlItem = this.activeControlItem.bind(this);
+  }
+
+  init() {
+    if (this.slide) {
+      this.bindEvents();
+      this.transition(true);
+      this.addSlideEvents();
+      this.slidesConfig();
+      this.addResizeEvent();
+      this.changeSlide(0);
+    }
+    return this;
   }
 }

@@ -35,6 +35,7 @@
 .slide>*.active {
   opacity: 1;
   transform: scale(1);
+  cursor: pointer;
 }
 
 [data-control="slide"] {
@@ -75,6 +76,7 @@
   margin: .4rem;
   box-shadow: 0 2px 2px rgba(0,0,0,.5);
   transition: .3s ease-in-out;
+  cursor: pointer;
 }
 
 .custom-controls > *.active { 
@@ -113,4 +115,14 @@
 
 .arrow-nav *.next { 
   box-shadow: 2px 2px 3px rgba(0,0,0,.3);
+}
+
+.prev.hide, .next.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease-in-out;
+}
+
+.no-controls > [data-control="slide"] {
+  display: none;
 }
